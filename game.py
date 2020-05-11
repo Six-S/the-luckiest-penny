@@ -48,7 +48,7 @@ class Game():
 
         room['hazard'] = self.returnConfigValue(room_hazard_num, self.room_config['hazards'])
         room['item_drop'] = self.returnConfigValue(room_item_drop_num, self.room_config['item_drop'])
-        room['number'] = self.turn
+        room['number'] = self.room_num
 
         return room
 
