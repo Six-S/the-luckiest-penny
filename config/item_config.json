@@ -1,0 +1,36 @@
+{
+    "weapons": {
+        "common_straight_sword": {
+            "friendly_name": "Common Straight Sword",
+            "damage": 10,
+            "difficulty": 3
+        },
+        "uncommon_straight_sword":{
+            "friendly_name": "Rare Straight Sword",
+            "damage": 15,
+            "difficulty": 4
+        },
+        "rare_straight_sword": {
+            "friendly_name": "Rare Stright Sword",
+            "damage": 15,
+            "difficulty": 4
+        }
+    },
+    "items":{
+        "test_item_common":{
+            "name": "Common Test Item",
+            "affects": "attack",
+            "change": 5
+        },
+        "test_item_uncommon":{
+            "name": "Uncommon Test Item",
+            "affects": "attack",
+            "change": 5
+        },
+        "test_item_rare":{
+            "name": "Rare Test Item",
+            "affects": "attack",
+            "change": 5
+        }
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "classes":{
+        "knight": {
+            "attack":15,
+            "defense": 12,
+            "strength": 10,
+            "skill": 7,
+            "perception": 7,
+            "intelligence":7,
+            "luck": 5
+        }
+    }
+}

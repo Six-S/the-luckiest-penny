@@ -1,0 +1,40 @@
+{
+    "enemy_config":{
+        "enemy_difficulty":{
+            "none": 25,
+            "weak": 65,
+            "strong": 90,
+            "ultra": 100
+        },
+        "enemy_item_drop":{
+            "none": 25,
+            "common": 65,
+            "rare": 90,
+            "ultra_rare": 100
+        },
+        "enemy_drops_weapon":{
+            "none": 75,
+            "weapon": 100
+        },
+        "enemy_type":{
+            "Bad guy": 50,
+            "Really Bad Guy": 75,
+            "Super Bad Guy": 100
+        }
+    },
+    "room_config":{
+        "hazards":{
+            "none": 65,
+            "poison": 75,
+            "heat": 85,
+            "dark": 95,
+            "curse": 100
+        },
+        "item_drop": {
+            "none": 70,
+            "common": 80,
+            "rare": 90,
+            "ultra_rare": 100
+        }
+    }
+}
