@@ -35,6 +35,7 @@ class Player():
         return self.avail_classes
     
     def get_current_player(self):
+        print(':thinking:', self.player_config)
         return self.player_config
     
     def get_player_inventory(self):

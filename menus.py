@@ -1,11 +1,12 @@
 from player import Player
+from game import Game
 
 class Menus():
 
     def __init__(self):
         print('[INFO] Starting Menu class...')
-        player = Player() 
-        self.classes = player.get_classes()
+        self.player = Player()
+        self.classes = self.player.get_classes()
         print('''
         :::::::::  :::::::::: ::::    ::: ::::    ::: ::::::::::: :::::::::: ::::::::                          
         :+:    :+: :+:        :+:+:   :+: :+:+:   :+:     :+:     :+:       :+:    :+:                         
@@ -60,6 +61,7 @@ class Menus():
 
                                             Classes:
                                 "Knight": Strong, balanced character
+                                "Custom": Create a custom class
                     +-+-+----------------------------------------------------+-+-+
         ''')
 
@@ -88,7 +90,9 @@ class Menus():
                                         "intelligence": {}
                                         "luck": {}
                     +-+-+----------------------------------------------------+-+-+
-                    '''.format(class_choice, class_stats['attack'], class_stats['defense'], class_stats['strength'], class_stats['skill'], class_stats['intelligence'], class_stats['perception'], class_stats['luck']))
+                    '''.format(class_choice, class_stats['attack'], class_stats['defense'],
+                    class_stats['strength'], class_stats['skill'], class_stats['intelligence'],
+                    class_stats['perception'], class_stats['luck']))
             else:
                 if self.check_class_exists(choice):
                     class_choice = choice
@@ -105,7 +109,7 @@ class Menus():
 
         return [ class_choice, char_name ]
 
-    def room_menu(self):
+    def room_menu(self, current_stats, enemy, room):
         print('''
                     +-+-+----------------------------------------------------+-+-+
                                           Room Number {}
@@ -118,14 +122,14 @@ class Menus():
                             "info": Information about the current room
                 
                     +-+-+----------------------------------------------------+-+-+
-        ''')
+        '''.format(room['number']))
 
         choice = input('> ').lower()
 
         #TODO: I'd love to replace all of these ifs with some kind of dict based function that works for all of the menus.
         # would do wonders for cleaner code.
         if 'stats' in choice:
-            print('this is not ready yet.')
+            self.display_stats(current_stats)
         elif 'inventory' in choice:
             print('this is not ready yet.')
         elif 'search' in choice:
@@ -138,6 +142,27 @@ class Menus():
  
     def roll_credits(self):
         raise NotImplementedError
+
+    #TODO: This would be dope.
+    def generate_custom_class(self):
+        raise NotImplementedError
+
+    def display_stats(self, current_stats):
+        print(current_stats)
+        print('''
+                    +-+-+----------------------------------------------------+-+-+
+                                            Stats:
+                                        "attack": {}
+                                        "defense": {}
+                                        "strength": {}
+                                        "skill": {}
+                                        "perception": {}
+                                        "intelligence": {}
+                                        "luck": {}
+                    +-+-+----------------------------------------------------+-+-+
+                    '''.format(current_stats['attack'], current_stats['defense'],
+                    current_stats['strength'], current_stats['skill'], current_stats['intelligence'],
+                    current_stats['perception'], current_stats['luck']))
 
     def check_class_exists(self, class_to_check):
         if class_to_check in self.classes:

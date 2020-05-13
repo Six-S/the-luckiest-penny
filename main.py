@@ -25,6 +25,7 @@ if __name__ in '__main__':
 
     #Now we're past the intro.
     #"You enter the valley, not sure what will come next, etc. etc."
+
     #Eh, while loop. There's a better way to do this, I'm sure.
     while not levelOver:
 
@@ -42,6 +43,7 @@ if __name__ in '__main__':
         room = game.room_configuration(current_stats)
         print(room)
 
+        menu.room_menu(current_stats, enemy, room)
 
         #we quit out for right now, we testin'.
         levelOver = True
