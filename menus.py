@@ -109,7 +109,7 @@ class Menus():
 
         return [ class_choice, char_name ]
 
-    def room_menu(self, current_stats, enemy, room):
+    def room_menu(self, room):
         print('''
                     +-+-+----------------------------------------------------+-+-+
                                           Room Number {}
@@ -120,6 +120,7 @@ class Menus():
                             "search": Search the room for loot
                             "move [direction]": Move character to another location
                             "info": Information about the current room
+                            "save": Save your current character
                 
                     +-+-+----------------------------------------------------+-+-+
         '''.format(room['number']))
@@ -128,16 +129,7 @@ class Menus():
 
         #TODO: I'd love to replace all of these ifs with some kind of dict based function that works for all of the menus.
         # would do wonders for cleaner code.
-        if 'stats' in choice:
-            self.display_stats(current_stats)
-        elif 'inventory' in choice:
-            print('this is not ready yet.')
-        elif 'search' in choice:
-            print('this is not ready yet.')
-        elif 'move' in choice:
-            print('this is not ready yet.')
-        elif 'info' in choice:
-            print('this is not ready yet.')
+        return choice
 
  
     def roll_credits(self):
@@ -148,7 +140,6 @@ class Menus():
         raise NotImplementedError
 
     def display_stats(self, current_stats):
-        print(current_stats)
         print('''
                     +-+-+----------------------------------------------------+-+-+
                                             Stats:
@@ -163,6 +154,38 @@ class Menus():
                     '''.format(current_stats['attack'], current_stats['defense'],
                     current_stats['strength'], current_stats['skill'], current_stats['intelligence'],
                     current_stats['perception'], current_stats['luck']))
+        
+        #this seems dumb right now but it's smart I swear.
+        return {
+            'leave': False
+        }
+    
+    def manage_inventory(self):
+        print('''
+        
+                    +-+-+----------------------------------------------------+-+-+
+                                Inventory Menu:
+                                        "Weapons"
+                                        "Armor"
+                                        "Consumables"
+                                        "Rings"
+                                        "Misc"
+                                        "Exit"
+                    +-+-+----------------------------------------------------+-+-+
+        ''')
+
+        leave_inventory = False
+        while not leave_inventory:
+
+            choice = input('> ').lower()
+
+            if choice not in "exit":
+                self.inventory_drilldown(choice)
+            else:
+                leave_inventory = True
+            
+    def inventory_drilldown(self, choice):
+        print('hi')
 
     def check_class_exists(self, class_to_check):
         if class_to_check in self.classes:

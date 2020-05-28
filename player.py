@@ -27,6 +27,8 @@ class Player():
                 'class': char_class,
                 'name': name
             })
+            self.player_inventory.update(self.avail_classes[char_class]['inventory'])
+            self.update_character_config()
         else:
             print('Must include a valid character class type to create a new character.')
             return False
@@ -34,6 +36,18 @@ class Player():
     def get_classes(self):
         return self.avail_classes
     
+    def update_character_config(self):
+        updated_player_info = self.player_config
+        updated_player_info.update({
+            "inventory": self.player_inventory
+        })
+        with open('config/player_config.json', 'w') as player:
+            json.dump(updated_player_info, player)
+
+        return{
+            "leave": False
+        }
+
     def get_current_player(self):
         print(':thinking:', self.player_config)
         return self.player_config

@@ -6,7 +6,7 @@
             "difficulty": 3
         },
         "uncommon_straight_sword":{
-            "friendly_name": "Rare Straight Sword",
+            "friendly_name": "Uncommon Straight Sword",
             "damage": 15,
             "difficulty": 4
         },
@@ -16,21 +16,36 @@
             "difficulty": 4
         }
     },
-    "items":{
+    "rings":{
         "test_item_common":{
-            "name": "Common Test Item",
+            "friendly_name": "Common Test Ring",
             "affects": "attack",
             "change": 5
         },
         "test_item_uncommon":{
-            "name": "Uncommon Test Item",
+            "friendly_name": "Uncommon Test Ring",
             "affects": "attack",
             "change": 5
         },
         "test_item_rare":{
-            "name": "Rare Test Item",
+            "friendly_name": "Rare Test Ring",
             "affects": "attack",
             "change": 5
         }
-    }
+    },
+    "armor": {
+        "test_armor_common":{
+            "friendly_name": "Common Test Armor",
+            "affects": "defense",
+            "change": 5
+        }
+    },
+    "consumables": {
+        "test_item_common":{
+            "friendly_name": "Common Test Item",
+            "affects": "health",
+            "change": 10
+        }
+    },
+    "Misc": {}
 }

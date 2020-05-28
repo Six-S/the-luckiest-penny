@@ -26,6 +26,22 @@ if __name__ in '__main__':
     #Now we're past the intro.
     #"You enter the valley, not sure what will come next, etc. etc."
 
+    room_menu_choices = { 
+        'stats': menu.display_stats,
+        'inventory': menu.manage_inventory,
+        'search': None,
+        'move': None,
+        'info': None,
+        'save': character_class.update_character_config,
+        'attack': None,
+        'defend': None,
+        'dodge': None
+    }
+
+    stat_changes = {
+        'damage': None
+    }
+
     #Eh, while loop. There's a better way to do this, I'm sure.
     while not levelOver:
 
@@ -43,7 +59,19 @@ if __name__ in '__main__':
         room = game.room_configuration(current_stats)
         print(room)
 
-        menu.room_menu(current_stats, enemy, room)
+        in_room = True
+        while in_room:
+            choice = menu.room_menu(room)
+
+            if choice in room_menu_choices:
+                #trash var name, but this stores changes that happened because of the players choice.
+                #Must be dict
+                effect = room_menu_choices[choice](current_stats)
+            else:
+                print('Invalid selection, please try again.')
+
+            if effect['leave']:
+                in_room = False
 
         #we quit out for right now, we testin'.
         levelOver = True
