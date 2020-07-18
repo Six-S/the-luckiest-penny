@@ -1,14 +1,18 @@
 from player import Player
 from menus import Menus
 from game import Game
+from utils import log
 
 if __name__ in '__main__':
+
+    log('[[INFO] main] Welcome to "The Luckiest Penny", version 0.1.1', 1)
 
     #run main menu
     levelOver = False
     menu = Menus()
     game = Game()
 
+    log('[[INFO] main] Init main menu', 1)
     menu.main_menu()
 
     #start by creating our character.

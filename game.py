@@ -1,19 +1,22 @@
 import random
 import json
+from utils import log
 
 class Game():
 
     def __init__(self):
-        print('Starting Game class.....')
+        log('[[INFO] Game.__init__] Starting Game class.', 1)
         self.turn_num = 0
         self.room_num = 0
         #these won't change during the course of the game, so we're safe to load it in on init.
         with open('config/item_config.json') as items:
             self.item_config = json.load(items)
+            log('[[INFO] Game.__init__] Successfully loaded item_config.json.', 1)
         with open('config/config.json') as config:
             config = json.load(config)
             self.enemy_config = config['enemy_config']
             self.room_config = config['room_config']
+            log('[[INFO] Game.__init__] Successfully loaded config.json.', 1)
 
 
     def should_spawn_bad_guy(self, current_stats):

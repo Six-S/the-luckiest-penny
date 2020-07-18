@@ -1,10 +1,11 @@
 from player import Player
 from game import Game
+from utils import log
 
 class Menus():
 
     def __init__(self):
-        print('[INFO] Starting Menu class...')
+        log('[[INFO] Menus.__init__] Init Menus class', 1)
         self.player = Player()
         self.classes = self.player.get_classes()
         print('''
@@ -38,6 +39,8 @@ class Menus():
         # choice = input('> ').lower()
         choice = 'play'
 
+        log('[[INFO] Menus.main_menu] User choice was: {0}'.format(choice), 1)
+
         if 'play' in choice:
             return True
         elif 'credits' in choice:
@@ -69,6 +72,8 @@ class Menus():
             #comment for debug
             # choice = input('> ').lower()
             choice = 'knight'
+
+            log('[[INFO] Menus.class_menu] User choice was: {0}'.format(choice), 1)
 
             if 'info' in choice:
                 class_choice = choice.split(' ')[1]
@@ -107,6 +112,8 @@ class Menus():
         # char_name = input('> ')
         char_name = "test_character"
 
+        log('[[INFO] Menus.main_menu] Character name is: {0}'.format(char_name), 1)
+
         return [ class_choice, char_name ]
 
     def room_menu(self, room):
@@ -124,8 +131,8 @@ class Menus():
                 
                     +-+-+----------------------------------------------------+-+-+
         '''.format(room['number']))
-
         choice = input('> ').lower()
+        log('[[INFO] Menus.room_menu] User choice was: {0}'.format(choice), 1)
 
         #TODO: I'd love to replace all of these ifs with some kind of dict based function that works for all of the menus.
         # would do wonders for cleaner code.
@@ -133,10 +140,12 @@ class Menus():
 
  
     def roll_credits(self):
+        log('[[CRITICAL] Menus.roll_credits] roll_credits does not yet exist.', 4)
         raise NotImplementedError
 
     #TODO: This would be dope.
     def generate_custom_class(self):
+        log('[[CRITICAL] Menus.roll_credits] generate_custom_class does not yet exist.', 4)
         raise NotImplementedError
 
     def display_stats(self, current_stats):
@@ -156,6 +165,7 @@ class Menus():
                     current_stats['perception'], current_stats['luck']))
         
         #this seems dumb right now but it's smart I swear.
+        #oh god why was this smart I don't remember.
         return {
             'leave': False
         }
@@ -179,6 +189,8 @@ class Menus():
 
             choice = input('> ').lower()
 
+            log('[[INFO] Menus.manage_inventory] User choice was: {0}'.format(choice), 1)
+
             if choice not in "exit":
                 self.inventory_drilldown(choice)
             else:
@@ -191,6 +203,6 @@ class Menus():
         if class_to_check in self.classes:
             return True
         else:
-            print('Hmmm... Are you sure that you chose your class correctly? I am not sure that class exists...')
+            log('[[WARN] Menus.check_class_exists] {0} is not an operable player class name.'.format(class_to_check), 2)
             return False
 
